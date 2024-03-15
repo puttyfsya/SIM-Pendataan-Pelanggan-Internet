@@ -1,8 +1,8 @@
 ###################
-My Infly Networks 
+Infly Register 
 ###################
 
-Triwung ialah aplikasi Manajemen Pembayaran Area Triwung yang terintergrasi dengan mikrotik
+Sistem Informasi Manajemen Pendataan Pelanggan
 
 *******************
 Release Information
@@ -14,7 +14,7 @@ Aplikasi ini realease pada tahun 2023
 Creadit
 *******************
 
-Developer : Dimas Bagus Wahyu Sudrajat
+Developer : Putri Diana Hafsyawati
 
 -  PHP version : 8.1.17 
 -  URL PHP : https://www.php.net/
