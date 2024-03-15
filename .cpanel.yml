@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/infh6776/public_html/inflyData
+    - /bin/cp -r * $DEPLOYPATH

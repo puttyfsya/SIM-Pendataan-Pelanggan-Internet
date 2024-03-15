@@ -1,0 +1,63 @@
+.logo > img {
+	width: 90%;
+	height: 40px !important;
+}
+.logologin {
+	width: 50%;
+	height: auto;
+}
+.judul {
+	margin-top: 5px;
+}
+.fotlogin {
+	color: #000;
+}
+.fotlogin2 {
+	color: #a1a1a1;
+}
+.menuatas {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	padding: 15px;
+	background-color: #fdfdfd;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.textmenuatas {
+	font-size: 19px;
+}
+
+.buttonmenuatas {
+	float: right;
+	padding-left: 100px;
+	background: #a9a9a9;
+	border: 0;
+	color: #fdfdfd;
+	padding: 7px;
+	font-size: 12px;
+	border-radius: 4px;
+	transition: 0.4s ease;
+}
+
+.buttonmenuatas:hover {
+	background: #2222;
+	color: #5c74ac;
+	cursor: pointer;
+}
+
+.btnsubmit {
+	float: right;
+	padding-left: 100px;
+	border: 0;
+	color: #fdfdfd;
+	padding: 7px;
+	font-size: 12px;
+	border-radius: 3px;
+	transition: 0.4s ease;
+}
+.btnsubmit:hover {
+	background: #00257d;
+	color: white;
+	cursor: pointer;
+}
