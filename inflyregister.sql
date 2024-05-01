@@ -40,10 +40,14 @@ CREATE TABLE `data_customer` (
   KEY `id_kecamatan` (`id_kecamatan`),
   KEY `id_kota` (`id_kota`),
   KEY `id_status` (`id_status`),
+  CONSTRAINT `FK_customer_kecamatan` FOREIGN KEY (`id_kecamatan`) REFERENCES `data_kecamatan` (`id_kecamatan`),
+  CONSTRAINT `FK_customer_kelurahan` FOREIGN KEY (`id_kelurahan`) REFERENCES `data_kelurahan` (`id_kelurahan`),
+  CONSTRAINT `FK_customer_kota` FOREIGN KEY (`id_kota`) REFERENCES `data_kota` (`id_kota`),
+  CONSTRAINT `FK_customer_status` FOREIGN KEY (`id_status`) REFERENCES `data_status` (`id_status`),
   CONSTRAINT `data_customer_ibfk_1` FOREIGN KEY (`id_kelurahan`) REFERENCES `data_kelurahan` (`id_kelurahan`),
   CONSTRAINT `data_customer_ibfk_2` FOREIGN KEY (`id_kota`) REFERENCES `data_kota` (`id_kota`),
   CONSTRAINT `data_customer_ibfk_3` FOREIGN KEY (`id_kecamatan`) REFERENCES `data_kecamatan` (`id_kecamatan`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +56,7 @@ CREATE TABLE `data_customer` (
 
 LOCK TABLES `data_customer` WRITE;
 /*!40000 ALTER TABLE `data_customer` DISABLE KEYS */;
-INSERT INTO `data_customer` VALUES (2,'1','a','22','2312313','gg',1,1,1,0,'0000-00-00','Luky');
+INSERT INTO `data_customer` VALUES (2,'1','a','22','2312313','gg',1,1,1,1,'0000-00-00','Luky'),(5,'1','a','2','3','c',2,1,1,1,'0000-00-00','Luky'),(6,'2','x','5','z','n',2,1,1,1,'0000-00-00','Luky');
 /*!40000 ALTER TABLE `data_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,6 +97,7 @@ CREATE TABLE `data_kecamatan` (
   `id_kota` int(11) NOT NULL,
   PRIMARY KEY (`id_kecamatan`),
   KEY `id_kota` (`id_kota`),
+  CONSTRAINT `FK_kecamatan_kota` FOREIGN KEY (`id_kota`) REFERENCES `data_kota` (`id_kota`),
   CONSTRAINT `data_kecamatan_ibfk_1` FOREIGN KEY (`id_kota`) REFERENCES `data_kota` (`id_kota`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -119,7 +124,8 @@ CREATE TABLE `data_kelurahan` (
   `nama_kelurahan` varchar(50) NOT NULL,
   `id_kecamatan` int(11) NOT NULL,
   PRIMARY KEY (`id_kelurahan`),
-  KEY `id_kecamatan` (`id_kecamatan`)
+  KEY `id_kecamatan` (`id_kecamatan`),
+  CONSTRAINT `FK_kelurahan_kecamatan` FOREIGN KEY (`id_kecamatan`) REFERENCES `data_kecamatan` (`id_kecamatan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -198,7 +204,9 @@ CREATE TABLE `data_pegawai` (
   `tlp_pegawai` varchar(255) NOT NULL,
   `id_jabatan` int(50) NOT NULL,
   `nama_jabatan` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_pegawai`)
+  PRIMARY KEY (`id_pegawai`),
+  KEY `FK_pegawai_jabatan` (`id_jabatan`),
+  CONSTRAINT `FK_pegawai_jabatan` FOREIGN KEY (`id_jabatan`) REFERENCES `data_jabatan` (`id_jabatan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -249,4 +257,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-01 20:27:31
+-- Dump completed on 2024-04-20 13:55:09
