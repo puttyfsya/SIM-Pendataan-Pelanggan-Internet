@@ -7,7 +7,7 @@
    <br>
    <div class="footer clearfix mb-0 text-muted">
       <div class="fotlogin">
-         <p align="center">2023 &copy; Infly Networks Create by Dimas&Putri</p>
+         <p align="center">2023 &copy; Infly Networks Create by Putri</p>
       </div>
    </div>
 </footer>

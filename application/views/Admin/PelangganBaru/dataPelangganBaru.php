@@ -45,7 +45,6 @@ if (!function_exists('changeDateFormat')) {
                     <div class="row justify-content-center">
                         <div class="col">
                             <a class="btn buttonmenuatas mr-5 ml-5" href="<?php echo base_url(); ?>Admin/PelangganBaru/TambahPelangganBaru"><i class="bi bi-file-earmark-spreadsheet"></i> Tambah Data</a>
-                            <a class="btn buttonmenuatas mr-5 ml-5" href="<?php echo base_url(); ?>Admin/PelangganBaru/excel_export/export"><i class="bi bi-save"></i> Export Data</a>
                         </div>
                     </div>
                     <table class="table table-striped" id="table1" width="100%">
@@ -62,16 +61,23 @@ if (!function_exists('changeDateFormat')) {
                             </tr>
                         </thead>
                         <?php
+                        $paketMap = [
+                            '1' => 'Home 10 Mbps - 160.000',
+                            '2' => 'Home 20 Mbps - 200.000',
+                            '3' => 'Home 30 Mbps - 250.000',
+                            '4' => 'Home 50 Mbps - 320.000',
+                            '5' => 'Home 100 Mbps - 499.000',
+                        ];
                         $no = 1;
                         foreach ($DataPelangganBaru as $data) {
                         ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $data['nama_customer'] ?></td>
-                                <td><?php echo $data['paket'] ?></td>
+                                <td><?php echo isset($paketMap[$data['paket']]) ? $paketMap[$data['paket']] : 'Tidak Diketahui' ?></td>
                                 <td><?php echo $data['tlp_customer'] ?></td>
                                 <td><?php echo $data['alamat_customer'] ?></td>
-                                <td><?php echo changeDateFormat('d-m-Y / H:i:s', $data['tanggal']) ?></td>
+                                <td><?php echo date('d-m-Y', strtotime($data['tanggal'])) ?></td>
                                 <td><?php echo $data['status'] ?></td>
                                 <td>
                                     <div class="dropdown">

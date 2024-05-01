@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="form-group">
                                     <label for="helpInputTop">Alamat</label>
                                     <input type="text" name="alamat_customer" class="form-control" id="alamat_customer">
@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                                 <div class="form-group">
                                     <label for="helpInputTop">Nama Pegawai</label>
                                     <select class="form-select" name="nama_pegawai" id="nama_pegawai">
@@ -98,55 +98,53 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label for="helpInputTop">Kota</label>
-                                    <select class="form-select" name="id_kota" id="id_kota">
-                                        <option disabled selected>-- Nama Kota --</option>
-                                        <?php foreach ($DataKota as $dataKota) : ?>
-                                            <option value="<?php echo $dataKota['id_kota']; ?>">
-                                                <?php echo $dataKota['nama_kota']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="helpInputTop">Kota</label>
+                                        <select class="form-select" name="id_kota" id="id_kota">
+                                            <option disabled selected>-- Nama Kota --</option>
+                                            <?php foreach ($DataKota as $dataKota) : ?>
+                                                <option value="<?php echo $dataKota['id_kota']; ?>">
+                                                    <?php echo $dataKota['nama_kota']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="helpInputTop">Kecamatan</label>
+                                        <select class="form-select" name="id_kecamatan" id="id_kecamatan">
+                                            <option disabled selected>-- Nama Kecamatan --</option>
+                                            <?php foreach ($DataWilayah as $dataKelurahan) : ?>
+                                                <option value="<?php echo $dataKelurahan['id_kecamatan']; ?>">
+                                                    <?php echo $dataKelurahan['nama_kecamatan']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="helpInputTop">Kelurahan</label>
+                                        <select class="form-select" name="id_kelurahan" id="id_kelurahan">
+                                            <option disabled selected>-- Nama Kelurahan --</option>
+                                            <?php foreach ($DataWilayah as $dataKelurahan) : ?>
+                                                <option value="<?php echo $dataKelurahan['id_kelurahan']; ?>">
+                                                    <?php echo $dataKelurahan['nama_kelurahan']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label for="helpInputTop">Kecamatan</label>
-                                    <select class="form-select" name="id_kecamatan" id="id_kecamatan">
-                                        <option disabled selected>-- Nama Kecamatan --</option>
-                                        <?php foreach ($DataWilayah as $dataKelurahan) : ?>
-                                            <option value="<?php echo $dataKelurahan['id_kecamatan']; ?>">
-                                                <?php echo $dataKelurahan['nama_kecamatan']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label for="helpInputTop">Kelurahan</label>
-                                    <select class="form-select" name="id_kelurahan" id="id_kelurahan">
-                                        <option disabled selected>-- Nama Kelurahan --</option>
-                                        <?php foreach ($DataWilayah as $dataKelurahan) : ?>
-                                            <option value="<?php echo $dataKelurahan['id_kelurahan']; ?>">
-                                                <?php echo $dataKelurahan['nama_kelurahan']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
 
-                        <div class="row">
-                            <div class="col-12 mt-5 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1" href="#">Submit</button>
-                                <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                            <div class="row">
+                                <div class="col-12 mt-5 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1" href="#">Submit</button>
+                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                </div>
                             </div>
-                        </div>
                     </form>
 
                 </div>

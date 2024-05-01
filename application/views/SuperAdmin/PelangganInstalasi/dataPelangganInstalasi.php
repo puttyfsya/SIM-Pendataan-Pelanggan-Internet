@@ -41,29 +41,32 @@ if (!function_exists('changeDateFormat')) {
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Tanggal</th>
+                                <th>Paket</th>
                                 <th>Telephone</th>
                                 <th>Alamat</th>
-                                <th>Paket</th>
+                                <th>Tanggal</th>
                                 <th>Status</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <?php
+                        $paketMap = [
+                            '1' => 'Home 10 Mbps - 160.000',
+                            '2' => 'Home 20 Mbps - 200.000',
+                            '3' => 'Home 30 Mbps - 250.000',
+                            '4' => 'Home 50 Mbps - 320.000',
+                            '5' => 'Home 100 Mbps - 499.000',
+                        ];
                         $no = 1;
                         foreach ($DataPelangganInstalasi as $data) {
                         ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $data['nama_customer'] ?></td>
-                                <td><?php echo changeDateFormat('d-m-Y / H:i:s', $data['tanggal']) ?></td>
+                                <td><?php echo isset($paketMap[$data['paket']]) ? $paketMap[$data['paket']] : 'Tidak Diketahui' ?></td>
                                 <td><?php echo $data['tlp_customer'] ?></td>
                                 <td><?php echo $data['alamat_customer'] ?></td>
-                                <td><?php echo $data['paket'] ?></td>
+                                <td><?php echo changeDateFormat('d-m-Y / H:i:s', $data['tanggal']) ?></td>
                                 <td><?php echo $data['status'] ?></td>
-                                <td>
-                                    <!-- <a onclick="return confirm('Yakin Menghapus Data')" class="btn btn-sm btn-danger" href="<?php echo base_url('Superadmin/PelangganInstalasi/DataPelangganInstalasi/deleteData/' . $data['id_customer']) ?>"><i class="bi bi-trash"></i></a> -->
-                                </td>
                             </tr>
                         <?php } ?>
                     </table>

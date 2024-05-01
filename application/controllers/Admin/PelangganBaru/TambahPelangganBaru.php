@@ -18,10 +18,9 @@ class TambahPelangganBaru extends CI_Controller
 
     public function index()
     {
-        $data['DataPegawai'] = $this->DataPegawai->DataPegawaiNew();
-        $data['DataWilayah'] = $this->DataWilayah->DataKelurahan();
         $data['DataKota'] = $this->DataWilayah->DataKota();
         $data['DataKecamatan'] = $this->DataWilayah->DataKecamatan();
+        $data['DataKelurahan'] = $this->DataWilayah->DataKelurahan();
         $data['DataPelangganBaru'] = $this->DataPelanggan->DataPelangganNew();
 
         $this->load->view('Admin/Template/header', $data);
@@ -76,7 +75,7 @@ class TambahPelangganBaru extends CI_Controller
             $id_kelurahan        = $this->input->post('id_kelurahan');
             $id_kecamatan        = $this->input->post('id_kecamatan');
             $id_kota             = $this->input->post('id_kota');
-            
+
             $data = array(
                 'nama_customer'      => $nama_customer,
                 'nik_customer'       => $nik_customer,

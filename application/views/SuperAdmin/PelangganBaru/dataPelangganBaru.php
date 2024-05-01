@@ -47,33 +47,39 @@ if (!function_exists('changeDateFormat')) {
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Tanggal</th>
+                                <th>Paket</th>
                                 <th>Telephone</th>
                                 <th>Alamat</th>
-                                <th>Paket</th>
+                                <th>Tanggal</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <?php
+                        $paketMap = [
+                            '1' => 'Home 10 Mbps - 160.000',
+                            '2' => 'Home 20 Mbps - 200.000',
+                            '3' => 'Home 30 Mbps - 250.000',
+                            '4' => 'Home 50 Mbps - 320.000',
+                            '5' => 'Home 100 Mbps - 499.000',
+                        ];
                         $no = 1;
                         foreach ($DataPelangganBaru as $data) {
                         ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $data['nama_customer'] ?></td>
-                                <td><?php echo changeDateFormat('d-m-Y / H:i:s', $data['tanggal']) ?></td>
+                                <td><?php echo isset($paketMap[$data['paket']]) ? $paketMap[$data['paket']] : 'Tidak Diketahui' ?></td>
                                 <td><?php echo $data['tlp_customer'] ?></td>
                                 <td><?php echo $data['alamat_customer'] ?></td>
-                                <td><?php echo $data['paket'] ?></td>
+                                <td><?php echo changeDateFormat('d-m-Y / H:i:s', $data['tanggal']) ?></td>
                                 <td><?php echo $data['status'] ?></td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-warning dropdown-toggle" type=" button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class=" bi bi-pencil-square"></i></a>
                                         <ul class="col-12 dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li><a onclick="" class="dropdown-item" href="<?php echo base_url('Superadmin/PelangganBaru/EditDataPelangganBaru/editData/' . $data['id_customer']) ?>">ACC Survey</a></li>
-                                            <!-- <li><a onclick="return confirm('Follow-up Customer')" class="dropdown-item" href="<?php echo base_url('Superadmin/PelangganBaru/WaPelangganBaru/followUpAksi/' . $data['id_customer']) ?>">Follow-up</a></li> -->
-                                            <!-- <li><a onclick="return confirm('Yakin Menghapus Data')" class="dropdown-item" href="<?php echo base_url('Superadmin/PelangganBaru/DataPelangganBaru/deleteData/' . $data['id_customer']) ?>">Hapus</a></li> -->
+
                                         </ul>
                                     </div>
                                 </td>
