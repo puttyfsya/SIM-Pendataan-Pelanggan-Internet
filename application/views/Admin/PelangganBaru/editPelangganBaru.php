@@ -61,7 +61,7 @@
                                                         <option value="4" <?php if ($data->paket == '4') echo 'selected'; ?>>Home 50 Mbps - 320.000</option>
                                                         <option value="5" <?php if ($data->paket == '5') echo 'selected'; ?>>Home 100 Mbps - 499.000</option>
                                                     </select>
-                                                    <!-- <div id="info-paket" class="bg-info mt-2 px-2 py-1 rounded" style="display: none;"></div> -->
+
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-6 mt-3 col-12">
@@ -89,44 +89,56 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-4">
-                                                    <div class="form-group">
+
+                                                <div class="col-md-4">
+                                                    <fieldset class="form-group">
                                                         <label for="helpInputTop">Kota</label>
                                                         <select class="form-select" name="id_kota" id="id_kota">
-                                                            <option disabled>-- Nama Kota --</option>
-                                                            <?php foreach ($DataKota as $dataKota) : ?>
-                                                                <option value="<?php echo $dataKota['id_kota']; ?>" <?php if ($dataKota['id_kota'] == $data->id_kota) echo 'selected'; ?>>
-                                                                    <?php echo $dataKota['nama_kota']; ?></option>
+                                                            <option disabled selected>-- Pilih Kota --</option>
+                                                            <?php foreach ($kota as $k) : ?>
+                                                                <option value="<?php echo $k['id_kota']; ?>" <?= $data->id_kota == $k['id_kota'] ? 'selected' : null ?>>
+                                                                    <?php echo $k['nama_kota']; ?>
+                                                                </option>
                                                             <?php endforeach; ?>
                                                         </select>
-                                                    </div>
+                                                        <div class="bg-danger mt-1">
+                                                            <small class="text-white"><?php echo form_error('id_kota') ?></small>
+                                                        </div>
+                                                    </fieldset>
                                                 </div>
-                                                <div class="col-4">
-                                                    <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <fieldset class="form-group">
                                                         <label for="helpInputTop">Kecamatan</label>
                                                         <select class="form-select" name="id_kecamatan" id="id_kecamatan">
-                                                            <option disabled>-- Nama Kecamatan --</option>
-                                                            <?php foreach ($DataWilayah as $dataWilayah) : ?>
-                                                                <option value="<?php echo $dataWilayah['id_kecamatan']; ?>" <?php if ($dataWilayah['id_kecamatan'] == $data->id_kecamatan) echo 'selected'; ?>>
-                                                                    <?php echo $dataWilayah['nama_kecamatan']; ?></option>
+                                                            <option disabled selected>-- Pilih Kecamatan --</option>
+                                                            <?php foreach ($kecamatan as $kec) : ?>
+                                                                <option value="<?php echo $kec['id_kecamatan']; ?>" data-kota="<?= $kec['id_kota']; ?>" <?= $data->id_kecamatan == $kec['id_kecamatan'] ? 'selected' : null ?>>
+                                                                    <?php echo $kec['nama_kecamatan']; ?>
+                                                                </option>
                                                             <?php endforeach; ?>
                                                         </select>
-                                                    </div>
+                                                        <div class="bg-danger mt-1">
+                                                            <small class="text-white"><?php echo form_error('id_kecamatan') ?></small>
+                                                        </div>
+                                                    </fieldset>
                                                 </div>
-                                                <div class="col-4">
-                                                    <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <fieldset class="form-group">
                                                         <label for="helpInputTop">Kelurahan</label>
                                                         <select class="form-select" name="id_kelurahan" id="id_kelurahan">
-                                                            <option disabled>-- Nama Kelurahan --</option>
-                                                            <?php foreach ($DataWilayah as $dataWilayah) : ?>
-                                                                <option value="<?php echo $dataWilayah['id_kelurahan']; ?>" <?php if ($dataWilayah['id_kelurahan'] == $data->id_kelurahan) echo 'selected'; ?>>
-                                                                    <?php echo $dataWilayah['nama_kelurahan']; ?></option>
+                                                            <option disabled selected>-- Pilih Kelurahan --</option>
+                                                            <?php foreach ($kelurahan as $kel) : ?>
+                                                                <option value="<?php echo $kel['id_kelurahan']; ?>" data-kecamatan="<?= $kel['id_kecamatan']; ?>" <?= $data->id_kelurahan == $kel['id_kelurahan'] ? 'selected' : null ?>>
+                                                                    <?php echo $kel['nama_kelurahan']; ?>
+                                                                </option>
                                                             <?php endforeach; ?>
                                                         </select>
-                                                    </div>
+                                                        <div class="bg-danger mt-1">
+                                                            <small class="text-white"><?php echo form_error('id_kelurahan') ?></small>
+                                                        </div>
+                                                    </fieldset>
                                                 </div>
                                             </div>
-
 
                                             <div class="col-12 mt-5 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1" href="#">Submit</button>
@@ -143,3 +155,43 @@
         </section>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var kotaSelect = document.getElementById('id_kota');
+        var kecamatanSelect = document.getElementById('id_kecamatan');
+        var kelurahanSelect = document.getElementById('id_kelurahan');
+
+        kotaSelect.addEventListener('change', function() {
+            var selectedKota = this.value;
+            var kecamatanOptions = kecamatanSelect.getElementsByTagName('option');
+
+            for (var i = 0; i < kecamatanOptions.length; i++) {
+                if (kecamatanOptions[i].getAttribute('data-kota') === selectedKota || kecamatanOptions[i].getAttribute('data-kota') === 'all') {
+                    kecamatanOptions[i].style.display = 'block';
+                } else {
+                    kecamatanOptions[i].style.display = 'none';
+                }
+            }
+
+
+            kecamatanSelect.value = '';
+
+            var event = new Event('change');
+            kecamatanSelect.dispatchEvent(event);
+        });
+
+        kecamatanSelect.addEventListener('change', function() {
+            var selectedKecamatan = this.value;
+            var kelurahanOptions = kelurahanSelect.getElementsByTagName('option');
+
+            for (var i = 0; i < kelurahanOptions.length; i++) {
+                if (kelurahanOptions[i].getAttribute('data-kecamatan') === selectedKecamatan || kelurahanOptions[i].getAttribute('data-kecamatan') === 'all') {
+                    kelurahanOptions[i].style.display = 'block';
+                } else {
+                    kelurahanOptions[i].style.display = 'none';
+                }
+            }
+            kelurahanSelect.value = '';
+        });
+    });
+</script>

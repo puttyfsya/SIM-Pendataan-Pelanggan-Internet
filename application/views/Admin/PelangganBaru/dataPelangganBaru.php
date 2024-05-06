@@ -78,7 +78,7 @@ if (!function_exists('changeDateFormat')) {
                                 <td><?php echo $data['tlp_customer'] ?></td>
                                 <td><?php echo $data['alamat_customer'] ?></td>
                                 <td><?php echo date('d-m-Y', strtotime($data['tanggal'])) ?></td>
-                                <td><?php echo $data['status'] ?></td>
+                                <td><?php echo $data['id_status'] ?></td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-warning dropdown-toggle" type=" button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class=" bi bi-pencil-square"></i></a>

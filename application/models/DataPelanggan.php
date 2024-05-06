@@ -3,17 +3,30 @@
 class DataPelanggan extends CI_Model
 {
 
-    //Menampilkan Data Baru
+
     public function DataPelangganNew()
     {
-        $query = $this->db->query("SELECT id_customer,paket, status, nama_customer, nik_customer, alamat_customer, tlp_customer	, nama_kelurahan, nama_kecamatan, nama_kota, tanggal
-        FROM data_customer dc
-        JOIN data_kelurahan dk ON dk.id_kelurahan = dc.id_kelurahan
-        JOIN data_kecamatan dkc ON dkc.id_kecamatan = dc.id_kecamatan
-        JOIN data_kota dkt ON dkt.id_kota = dc.id_kota
-        JOIN data_status ds ON ds.id_status = dc.id_status
-        WHERE dc.id_status=1
-        
+        $query = $this->db->query("SELECT data_customer.id_customer, data_customer.paket, data_customer.nama_customer, data_customer.nik_customer, data_customer.tlp_customer, data_customer.alamat_customer,
+          data_customer.id_kelurahan, data_customer.id_kecamatan, data_customer.id_kota, data_customer.id_status, data_customer.tanggal, data_customer.nama_pegawai
+        FROM data_customer 
+        INNER JOIN data_kelurahan  ON data_customer.id_kelurahan = data_kelurahan.id_kelurahan
+        INNER JOIN data_kecamatan  ON data_customer.id_kecamatan = data_kecamatan.id_kecamatan
+        INNER JOIN data_kota  ON data_customer.id_kota = data_kota.id_kota
+        INNER JOIN data_status  ON data_customer.id_status = data_status.id_status
+        WHERE data_customer.id_status=1
+        ORDER BY id_customer DESC;");
+        return $query->result_array();
+    }
+    public function DataPelangganNew2()
+    {
+        $query = $this->db->query("SELECT data_customer.id_customer, data_customer.paket, data_customer.nama_customer, data_customer.nik_customer, data_customer.tlp_customer, data_customer.alamat_customer,
+          data_customer.id_kelurahan, data_customer.id_kecamatan, data_customer.id_kota, data_customer.id_status, data_customer.tanggal, data_customer.nama_pegawai
+        FROM data_customer 
+        INNER JOIN data_kelurahan  ON data_customer.id_kelurahan = data_kelurahan.id_kelurahan
+        INNER JOIN data_kecamatan  ON data_customer.id_kecamatan = data_kecamatan.id_kecamatan
+        INNER JOIN data_kota  ON data_customer.id_kota = data_kota.id_kota
+        INNER JOIN data_status  ON data_customer.id_status = data_status.id_status
+        WHERE data_customer.id_status=1
         ORDER BY id_customer DESC;");
         return $query->result_array();
     }
@@ -21,8 +34,7 @@ class DataPelanggan extends CI_Model
     public function TotalPelangganNew()
     {
         $query =
-            $this->db->query("SELECT id_customer,paket, nama_customer, nik_customer, alamat_customer, tlp_customer	, id_kelurahan, id_kecamatan, id_kota, tanggal, 
-            id_status FROM data_customer");
+            $this->db->query("SELECT id_customer, paket, nama_customer, nik_customer, alamat_customer, tlp_customer, id_kelurahan, id_kecamatan, id_kota, id_status FROM data_customer");
 
         return $query->num_rows();
     }
@@ -30,8 +42,7 @@ class DataPelanggan extends CI_Model
     public function JumlahPelangganNew()
     {
         $query =
-            $this->db->query("SELECT id_customer,paket, nama_customer, nik_customer, alamat_customer, tlp_customer	, id_kelurahan, id_kecamatan, id_kota, tanggal, 
-            id_status 
+            $this->db->query("SELECT id_customer, paket, nama_customer, nik_customer, alamat_customer, tlp_customer, id_kelurahan, id_kecamatan, id_kota, tanggal, id_status 
             FROM data_customer 
             WHERE id_status='1';");
 
@@ -40,20 +51,16 @@ class DataPelanggan extends CI_Model
 
     public function EditDataPelanganNew($id)
     {
-        $this->db->select('id_customer, paket, nama_customer, nik_customer, tlp_customer, alamat_customer,  tanggal');
+        $this->db->select('id_customer, paket, nama_customer, nik_customer, tlp_customer, alamat_customer, id_kelurahan, id_kecamatan, id_kota, tanggal');
         $this->db->where('id_customer', $id);
         $result = $this->db->get('data_customer');
 
         return $result->row();
     }
 
-    // Menambah Data Baru
     public function insertData($data, $table)
     {
-        $this->db->insert(
-            $table,
-            $data
-        );
+        $this->db->insert($table, $data);
     }
 
     public function updateData($table, $data, $where)
