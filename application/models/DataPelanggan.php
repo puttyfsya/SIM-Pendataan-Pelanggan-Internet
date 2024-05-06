@@ -20,7 +20,7 @@ class DataPelanggan extends CI_Model
     public function DataPelangganNew2()
     {
         $query = $this->db->query("SELECT data_customer.id_customer, data_customer.paket, data_customer.nama_customer, data_customer.nik_customer, data_customer.tlp_customer, data_customer.alamat_customer,
-          data_customer.id_kelurahan, data_customer.id_kecamatan, data_customer.id_kota, data_customer.id_status, data_customer.tanggal, data_customer.nama_pegawai
+        data_customer.id_kelurahan, data_customer.id_kecamatan, data_customer.id_kota, data_customer.id_status, data_customer.tanggal, data_customer.nama_pegawai
         FROM data_customer 
         INNER JOIN data_kelurahan  ON data_customer.id_kelurahan = data_kelurahan.id_kelurahan
         INNER JOIN data_kecamatan  ON data_customer.id_kecamatan = data_kecamatan.id_kecamatan
@@ -30,6 +30,14 @@ class DataPelanggan extends CI_Model
         ORDER BY id_customer DESC;");
         return $query->result_array();
     }
+
+    public function getStatusNameById($id_status)
+    {
+        $query = $this->db->get_where('data_status', array('id_status' => $id_status));
+        $result = $query->row();
+        return isset($result) ? $result->status : 'Tidak Diketahui';
+    }
+
 
     public function TotalPelangganNew()
     {

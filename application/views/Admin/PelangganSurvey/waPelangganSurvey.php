@@ -9,14 +9,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Tabel Pelanggan Baru</h3>
-                    <p class="text-subtitle text-muted">Data Pelanggan Baru</p>
+                    <h3>Follow Up Data Pelanggan Survey</h3>
+                    <p class="text-subtitle text-muted">Follow up Pelanggan Survey</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>Dashboard1">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Pelanggan Baru</li>
+                            <li class="breadcrumb-item active" aria-current="page">Survey</li>
                         </ol>
                     </nav>
                 </div>
