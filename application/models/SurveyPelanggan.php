@@ -9,13 +9,18 @@ class SurveyPelanggan extends CI_Model
     //Menampilkan Data Baru
     public function DataPelangganSurveyNew()
     {
-        $query = $this->db->query("SELECT id_customer, paket, nama_customer, nik_customer, alamat_customer, tlp_customer, tanggal, status 
+        $query = $this->db->query("SELECT id_customer, paket, nama_customer, nik_customer, alamat_customer, tlp_customer, tanggal, 
+        nama_kelurahan, nama_kecamatan, nama_kota, status 
         
         FROM data_customer dc 
         JOIN data_status ds ON ds.id_status = dc.id_status
+        JOIN data_kelurahan dt on dt.id_kelurahan = dc.id_kelurahan
+        JOIN data_kecamatan dk on dk.id_kecamatan = dc.id_kecamatan
+        JOIN data_kota da on da.id_kota = dc.id_kota
+
         WHERE dc.id_status=2
         
-        ORDER BY id_customer DESC;");
+        ORDER BY id_customer ASC;");
         return $query->result_array();
     }
 

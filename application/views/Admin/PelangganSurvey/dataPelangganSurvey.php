@@ -26,7 +26,7 @@ if (!function_exists('changeDateFormat')) {
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>Dashboard1">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>Dashboard1">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">DataTable</li>
                         </ol>
                     </nav>
@@ -38,7 +38,8 @@ if (!function_exists('changeDateFormat')) {
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col">
-                            <a class="btn buttonmenuatas mr-5 ml-5" href="<?php echo base_url(); ?>Admin/PelangganSurvey/Excel_export/export"><i class="bi bi-save"></i> Export Data</a>
+                            <a class="btn buttonmenuatas mr-5 ml-5n" href="<?php echo base_url(); ?>Admin/PelangganSurvey/Excel_export/export">
+                                <i class="bi bi-save"></i> Export Data</a>
                         </div>
                     </div>
                     <table class="table table-striped" id="table1" width="100%">

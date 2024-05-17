@@ -84,7 +84,7 @@ if (!function_exists('changeDateFormat')) {
                                         <a class="btn btn-sm btn-warning dropdown-toggle" type=" button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class=" bi bi-pencil-square"></i></a>
                                         <ul class="col-12 dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li><a onclick="return confirm('Yakin Mengedit Data?')" class="dropdown-item" href="<?php echo base_url('Admin/PelangganBaru/EditDataPelangganBaru/editData/' . $data['id_customer']) ?>">Edit</a></li>
-                                            <li><a onclick="return confirm('Yakin Menghapus Data')" class="dropdown-item" href="<?php echo base_url('Admin/PelangganSurvey/DataPelangganSurvey/deleteData/' . $data['id_customer']) ?>">Hapus</a></li>
+                                            <li><a onclick="return confirm('Yakin Menghapus Data')" class="dropdown-item" href="<?php echo base_url('Admin/PelangganBaru/DataPelangganBaru/deleteData/' . $data['id_customer']) ?>">Hapus</a></li>
                                         </ul>
                                     </div>
                                 </td>

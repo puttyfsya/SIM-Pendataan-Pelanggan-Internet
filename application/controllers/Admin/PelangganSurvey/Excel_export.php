@@ -5,6 +5,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class Excel_export extends CI_Controller
 {
@@ -34,7 +36,7 @@ class Excel_export extends CI_Controller
         $logoPath = 'assets/images/logo/infly-logo.png'; // Ganti dengan path logo Anda
         $drawing = new Drawing();
         $drawing->setPath($logoPath);
-        $drawing->setWidth(120); // Atur lebar gambar
+        $drawing->setWidth(150); // Atur lebar gambar
         $drawing->setHeight(50); // Atur tinggi gambar
         $drawing->setCoordinates('A1');
 
@@ -45,16 +47,17 @@ class Excel_export extends CI_Controller
         $drawing->setWorksheet($spreadsheet->getActiveSheet());
 
         // Set judul kolom
-        $spreadsheet->getActiveSheet()->setCellValue('C1', 'Laporan Data Pelanggan');
-        $spreadsheet->getActiveSheet()->getStyle('C1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+        $spreadsheet->getActiveSheet()->setCellValue('C1', 'Laporan Data Pelanggan Infly Networks');
+        $spreadsheet->getActiveSheet()->getStyle('C1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         $spreadsheet->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('C1')->getFont()->setSize(24);
 
         // Merge cells untuk judul
         $spreadsheet->getActiveSheet()->mergeCells('C1:K2');
         $spreadsheet->getActiveSheet()->mergeCells('A1:A3');
 
         // Set judul kolom
-        $spreadsheet->getActiveSheet()->setCellValue('A5', 'Nomer Urut');
+        $spreadsheet->getActiveSheet()->setCellValue('A5', 'No');
         $spreadsheet->getActiveSheet()->setCellValue('B5', 'Paket');
         $spreadsheet->getActiveSheet()->setCellValue('C5', 'Nama Customer');
         $spreadsheet->getActiveSheet()->setCellValue('D5', 'NIK Customer');
@@ -65,6 +68,8 @@ class Excel_export extends CI_Controller
         $spreadsheet->getActiveSheet()->setCellValue('I5', 'Kota');
         $spreadsheet->getActiveSheet()->setCellValue('J5', 'Tanggal');
         $spreadsheet->getActiveSheet()->setCellValue('K5', 'Status');
+
+
 
         // Populate data
         $row = 6; // Mulai dari baris ke-5
@@ -87,6 +92,11 @@ class Excel_export extends CI_Controller
 
         // Set border
         $spreadsheet->getActiveSheet()->getStyle('A5:K' . ($row - 1))->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+        // $spreadsheet->getActiveSheet()->getStyle('A5:K' . ($row - 1))->getBorders()->getAllBorders()->getColor()->setARGB(Color::COLOR_RED);
+
+        // / Mengatur warna latar belakang kolom
+        $spreadsheet->getActiveSheet()->getStyle('A5:K5')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFE599'); // Warna kuning muda
+
 
         // Set header style
         $spreadsheet->getActiveSheet()->getStyle('A5:K5')->getFont()->setBold(true);
