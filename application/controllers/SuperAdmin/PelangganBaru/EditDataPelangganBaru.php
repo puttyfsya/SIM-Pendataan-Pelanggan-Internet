@@ -37,6 +37,6 @@ class EditDataPelangganBaru extends CI_Controller
                 </div>'
         );
 
-        redirect('SuperAdmin/PelangganBaru/DataPelangganBaru');
+        redirect('SuperAdmin/PelangganSurvey/DataPelangganSurvey');
     }
 }

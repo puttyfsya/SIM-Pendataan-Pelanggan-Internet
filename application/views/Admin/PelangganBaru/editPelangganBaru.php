@@ -22,6 +22,9 @@
                 </div>
             </div>
         </div>
+        <?php if ($this->session->flashdata('pesan')) : ?>
+            <?php echo $this->session->flashdata('pesan'); ?>
+        <?php endif; ?>
         <section id="multiple-column-form">
             <div class="row match-height">
                 <div class="col-12">
@@ -36,6 +39,9 @@
                                                     <label for="name">Nama</label>
                                                     <input type="text" id="name-column" class="form-control" name="nama_customer" value="<?php echo $data->nama_customer ?>">
                                                     <input type="hidden" class="form-control" name="id_customer" id="id" value="<?php echo $data->id_customer ?>">
+                                                    <div class="bg-danger mt-1">
+                                                        <small class="text-red"><?php echo form_error('nama_customer') ?></small>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mt-3 col-12">

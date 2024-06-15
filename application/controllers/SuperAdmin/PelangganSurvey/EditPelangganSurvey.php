@@ -38,7 +38,7 @@ class EditPelangganSurvey extends CI_Controller
                 </div>'
         );
 
-        redirect('SuperAdmin/PelangganSurvey/DataPelangganSurvey');
+        redirect('SuperAdmin/PelangganInstalasi/DataPelangganInstalasi');
     }
 
     public function dataTolak($id)
@@ -63,6 +63,6 @@ class EditPelangganSurvey extends CI_Controller
                 </div>'
         );
 
-        redirect('SuperAdmin/PelangganSurvey/DataPelangganSurvey');
+        redirect('SuperAdmin/TidakTercover/DataTidakTercover');
     }
 }

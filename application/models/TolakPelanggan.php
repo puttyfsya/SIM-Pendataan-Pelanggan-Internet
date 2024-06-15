@@ -43,7 +43,9 @@ class TolakPelanggan extends CI_Model
         $this->db->where(
             'id_customer',
             $id
+
         );
+
         $result = $this->db->get('data_customer');
 
         return $result->row();

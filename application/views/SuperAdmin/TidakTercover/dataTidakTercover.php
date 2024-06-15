@@ -67,7 +67,7 @@ if (!function_exists('changeDateFormat')) {
                                 <td><?php echo isset($paketMap[$data['paket']]) ? $paketMap[$data['paket']] : 'Tidak Diketahui' ?></td>
                                 <td><?php echo $data['tlp_customer'] ?></td>
                                 <td><?php echo $data['alamat_customer'] ?></td>
-                                <td><?php echo changeDateFormat('d-m-Y / H:i:s', $data['tanggal']) ?></td>
+                                <td><?php echo changeDateFormat('d-m-Y', $data['tanggal']) ?></td>
                                 <td><?php echo $data['status'] ?></td>
                                 <td>
                                     <div class="dropdown">

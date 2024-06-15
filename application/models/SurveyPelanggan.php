@@ -20,7 +20,7 @@ class SurveyPelanggan extends CI_Model
 
         WHERE dc.id_status=2
         
-        ORDER BY id_customer ASC;");
+        ORDER BY id_customer DESC;");
         return $query->result_array();
     }
 

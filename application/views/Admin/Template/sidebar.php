@@ -27,13 +27,13 @@
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
-                                <span>Customer Data</span>
+                                <span>Data Pelanggan</span>
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
                                     <a href="<?php echo base_url(); ?>Admin/PelangganBaru/DataPelangganBaru" class='sidebar-link'>
                                         <i class="bi bi-person-plus-fill"></i>
-                                        <span>New Customer</span>
+                                        <span>Pelanggan Baru</span>
                                     </a>
                                 </li>
                                 <li class="submenu-item">
@@ -45,13 +45,13 @@
                                 <li class="submenu-item">
                                     <a href="<?php echo base_url(); ?>Admin/PelangganInstalasi/DataPelangganInstalasi" class='sidebar-link'>
                                         <i class="bi bi-gear-wide-connected"></i>
-                                        <span>Installation</span>
+                                        <span>Instalasi</span>
                                     </a>
                                 </li>
                                 <li class="submenu-item">
                                     <a href="<?php echo base_url(); ?>Admin/TidakTercover/DataTidakTercover" class='sidebar-link'>
                                         <i class="bi bi-wifi-off"></i>
-                                        <span>Not Covered</span>
+                                        <span>Tidak Tercover</span>
                                     </a>
                                 </li>
 
@@ -63,7 +63,7 @@
                         <li class="sidebar-item">
                             <a href="<?php echo base_url(); ?>Admin/PegawaiData/DataPegawaiInfly" class='sidebar-link'>
                                 <i class="bi bi-person-plus-fill"></i>
-                                <span>Employee Data</span>
+                                <span>Data Pegawai</span>
                             </a>
                         </li>
 

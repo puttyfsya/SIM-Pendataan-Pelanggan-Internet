@@ -66,6 +66,7 @@ class DataPelanggan extends CI_Model
         return $result->row();
     }
 
+
     public function insertData($data, $table)
     {
         $this->db->insert($table, $data);

@@ -39,6 +39,9 @@ if (!function_exists('changeDateFormat')) {
                 </div>
             </div>
         </div>
+        <?php if ($this->session->flashdata('pesan')) : ?>
+            <?php echo $this->session->flashdata('pesan'); ?>
+        <?php endif; ?>
         <section class="section">
             <div class="card">
                 <div class="card-body">
@@ -51,9 +54,9 @@ if (!function_exists('changeDateFormat')) {
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Id</th>
                                 <th>Nama</th>
                                 <th>Paket</th>
-                                <th>Telephone</th>
                                 <th>Alamat</th>
                                 <th>Tanggal</th>
                                 <th>Status</th>
@@ -73,9 +76,9 @@ if (!function_exists('changeDateFormat')) {
                         ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
+                                <td><?php echo $data['id_customer'] ?></td>
                                 <td><?php echo $data['nama_customer'] ?></td>
                                 <td><?php echo isset($paketMap[$data['paket']]) ? $paketMap[$data['paket']] : 'Tidak Diketahui' ?></td>
-                                <td><?php echo $data['tlp_customer'] ?></td>
                                 <td><?php echo $data['alamat_customer'] ?></td>
                                 <td><?php echo date('d-m-Y', strtotime($data['tanggal'])) ?></td>
                                 <td><?php echo $data['id_status'] ?></td>

@@ -21,13 +21,14 @@ class EditDataPelangganBaru extends CI_Controller
         $data['kota'] = $this->DataWilayah->DataKota();
         $data['kecamatan'] = $this->DataWilayah->DataKecamatan();
         $data['kelurahan'] = $this->DataWilayah->DataKelurahan();
+        // $data['DataPelangganEdit'] = $this->DataPelanggan->DataPelangganEdit();
         $data['DataPelangganEdit'] = $this->db->query("SELECT dc.id_customer, dc.paket, dc.nama_customer, dc.nik_customer, dc.alamat_customer, dc.tlp_customer, dc.id_kelurahan, dc.id_kecamatan, dc.id_kota, dc.id_status, dc.tanggal, dc.nama_pegawai, ds.status
         FROM data_customer dc 
         JOIN data_kota dk ON dk.id_kota = dc.id_kota 
         JOIN data_kecamatan dkec ON dkec.id_kecamatan = dc.id_kecamatan 
         JOIN data_kelurahan dkel ON dkel.id_kelurahan = dc.id_kelurahan 
         JOIN data_status ds ON ds.id_status = dc.id_status 
-        WHERE id_customer=$id")->result();
+        WHERE id_customer='$id'")->result();
 
         $this->load->view('Admin/Template/header', $data);
         $this->load->view('Admin/Template/sidebar', $data);
@@ -46,7 +47,7 @@ class EditDataPelangganBaru extends CI_Controller
         JOIN data_kecamatan dkec ON dkec.id_kecamatan = dc.id_kecamatan 
         JOIN data_kelurahan dkel ON dkel.id_kelurahan = dc.id_kelurahan 
         JOIN data_status ds ON ds.id_status = dc.id_status 
-        WHERE id_customer=$id")->result();
+        WHERE id_customer='$id'")->result();
 
         $this->form_validation->set_rules('paket', 'Paket', 'required');
         $this->form_validation->set_rules('nama_customer', 'Nama', 'required');
@@ -82,7 +83,7 @@ class EditDataPelangganBaru extends CI_Controller
                 'id_kota'           => $id_kota,
                 'id_status'         => 1,
                 'tanggal'           => $tanggal_baru,
-                'nama_pegawai'      => 'Eka',
+                'nama_pegawai'      => 'Admin',
             );
             $where = array(
                 'id_customer'              => $id

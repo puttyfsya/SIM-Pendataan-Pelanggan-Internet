@@ -49,6 +49,9 @@ class TambahPelangganBaru extends CI_Controller
         $this->form_validation->set_message('required', 'Masukkan data terlebih dahulu...');
 
         if ($this->form_validation->run() == false) {
+
+            $data['DataPelanggan'] = $this->input->post();
+
             $this->load->view('Admin/Template/header', $data);
             $this->load->view('Admin/Template/sidebar', $data);
             $this->load->view('Admin/PelangganBaru/tambahPelangganBaru', $data);
@@ -59,8 +62,23 @@ class TambahPelangganBaru extends CI_Controller
             $id_kelurahan = $this->input->post('kelurahan');
             $id_kota = $this->input->post('kota');
 
+            // Generate unique id_customer with prefix
+            $prefix = 'INF2024';
+
+            // Get the last inserted ID
+            $last_id = $this->db->query("SELECT id_customer FROM data_customer ORDER BY id_customer DESC LIMIT 1")->row();
+
+            if ($last_id) {
+                $last_id_number = intval(substr($last_id->id_customer, -5));
+                $new_id_number = str_pad($last_id_number + 1, 5, '0', STR_PAD_LEFT);
+            } else {
+                $new_id_number = '00001';
+            }
+
+            $unique_id = $prefix . $new_id_number; // Generate unique ID with prefix
 
             $data = array(
+                'id_customer' => $unique_id,
                 'paket' => $this->input->post('paket'),
                 'nama_customer' => $this->input->post('nama_customer'),
                 'nik_customer' => $this->input->post('nik_customer'),

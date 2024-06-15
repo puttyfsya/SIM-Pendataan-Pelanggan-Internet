@@ -42,7 +42,6 @@ if (!function_exists('changeDateFormat')) {
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Paket</th>
-                                <th>Telephone</th>
                                 <th>Alamat</th>
                                 <th>Tanggal</th>
                                 <th>Status</th>
@@ -63,7 +62,6 @@ if (!function_exists('changeDateFormat')) {
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $data['nama_customer'] ?></td>
                                 <td><?php echo isset($paketMap[$data['paket']]) ? $paketMap[$data['paket']] : 'Tidak Diketahui' ?></td>
-                                <td><?php echo $data['tlp_customer'] ?></td>
                                 <td><?php echo $data['alamat_customer'] ?></td>
                                 <td><?php echo date('d-m-Y', strtotime($data['tanggal'])) ?></td>
                                 <td><?php echo $data['status'] ?></td>

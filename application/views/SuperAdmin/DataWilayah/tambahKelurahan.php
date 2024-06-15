@@ -28,6 +28,7 @@
 
                     <form method="POST" action="<?php echo base_url('SuperAdmin/DataWilayah/DataKelurahan/TambahKelurahan') ?>">
                         <div class="row">
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="kota-column">Nama Kecamatan</label>
